@@ -1,1 +1,1 @@
-This is just my code practise.
+This Is Just My Code Practice.
