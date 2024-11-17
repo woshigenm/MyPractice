@@ -40,6 +40,8 @@ int compare(const void* a, const void* b);
 
 void SSort(int array[], int size, int (*compare)(const void* a, const void* b));
 
+void ISort(int array[], int size, int (*compare)(const void* a, const void* b));
+
 int main()
 {
 	/*LinkList* i = CreateLink(2);
@@ -52,7 +54,7 @@ int main()
 	int array[SIZE] = { 5,6,4,3,9,8,7,1,10,2 };
 	int size = sizeof(array) / sizeof(array[0]);
 	PRINT(array, size);
-	SSort(array, size ,compare);
+	ISort(array, size ,compare);
 	PRINT(array, size);
 
 	return 0;
@@ -73,6 +75,23 @@ void SSort(int array[], int size, int (*compare)(const void* a, const void* b))
 		int temp = array[i];
 		array[i] = array[min];
 		array[min] = temp;
+	}
+}
+
+void ISort(int array[], int size, int(*compare)(const void* a, const void* b))
+{
+	int i, j, min;
+
+	for (i = 1; i < size; ++i)
+	{
+		j = i - 1;
+		min = array[i];
+		while ((j >= 0) && compare(&array[j], &min) > 0)
+		{
+			array[j + 1] = array[j];
+			j--;
+		}
+		array[j + 1] = min;
 	}
 }
 
